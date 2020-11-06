@@ -65,9 +65,52 @@ $superheroes = [
 ];
 
 ?>
+<?php
+    $searchValue = $_GET['query'];
+    if(empty($searchValue)){
+?>
 
 <ul>
 <?php foreach ($superheroes as $superhero): ?>
   <li><?= $superhero['alias']; ?></li>
 <?php endforeach; ?>
 </ul>
+<?php } else {?>
+
+
+<?php
+function searchForHero($value, $array) {
+    foreach ($array as $key => $val) {
+        //echo("<p> $key = $val and $value and ".$val['name']."</p>");
+        if ((strcasecmp($val['name'], $value) == 0) || (strcasecmp($val['alias'], $value) == 0)) {
+            return $key;
+        }
+    }
+    return null;
+ }
+if(preg_match("/(^\s*$)|((([a-zA-Z]){3,25}\s([a-zA-Z]){3,25})|(([a-zA-Z]){3,25}))/", $searchValue)){
+    //echo($searchValue);
+    $found = searchForHero($searchValue, $superheroes);
+    //echo($found);
+    if($found !== null){
+ ?>
+<h3>
+<?= $superheroes[$found]['alias']; ?>
+</h3>
+<h4>
+A.K.A. <?= $superheroes[$found]['name']; ?>
+</h4>
+<p>
+<?= $superheroes[$found]['biography']; ?>
+</p>
+<?php
+
+    } else {
+        echo("<p> SUPERHERO NOT FOUND </p>");
+    }
+
+    } else {
+        echo("<p> INVALID SEARCH VALUE </p>");
+    }
+}
+?>

@@ -12,7 +12,7 @@
     </header>
     <main>
         <p>Search by Full Name or Alias</p>
-        <input id="searchValue" name="searchValue" type="text" placeholder="e.g. Captain America or Steve Rodgers" pattern="/(([a-zA-Z]){3,25}|([a-zA-Z]){3,25}' '([a-zA-Z]){3,25})|''/" oninvalid="this.setCustomValidity('Must contain alphabet character only and must be longer than 2 characters.')" oninput="this.setCustomValidity('')"><button id="Search"> Search</button>
+        <input id="searchValue" name="searchValue" type="text" placeholder="e.g. Captain America or Steve Rodgers" pattern="/(^\s*$)|((([a-zA-Z]){3,25}\s([a-zA-Z]){3,25})|(([a-zA-Z]){3,25}))/" oninvalid="this.setCustomValidity('Must contain alphabet characters only and must be longer than 2 characters.')" oninput="this.setCustomValidity('')"><button id="Search"> Search</button>
         <h2><strong>RESULT</strong></h2><hr>
         <div id="result">
             <!-- AJAX response goes here-->
