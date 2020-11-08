@@ -106,11 +106,11 @@ A.K.A. <?= $superheroes[$found]['name']; ?>
 <?php
 
     } else {
-        echo("<p> SUPERHERO NOT FOUND </p>");
+        echo("<p class='error'> SUPERHERO NOT FOUND </p>");
     }
 
     } else {
-        echo("<p> INVALID SEARCH VALUE </p>");
+        echo("<p class='error'> INVALID SEARCH VALUE </p>");
     }
 }
 ?>

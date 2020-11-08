@@ -3,7 +3,6 @@ window.onload = function(){
     var searchField = this.document.getElementById("searchValue");
     var exp = /(^\s*$)|((([a-zA-Z]){3,25}\s([a-zA-Z]){3,25})|(([a-zA-Z]){3,25}))/
     searchButton.addEventListener('click', () => {
-        searchField.reportValidity();
         var sanitizedSearchValue =  searchField.value.trim()
         if(exp.test(sanitizedSearchValue)){
             this.fetch('http://localhost:8080/superheroes.php?' + new URLSearchParams({
@@ -17,7 +16,7 @@ window.onload = function(){
                 this.alert(error);
             });
         } else {
-
+            searchField.reportValidity();
         }
 
     })
